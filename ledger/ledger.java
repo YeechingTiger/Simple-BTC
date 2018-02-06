@@ -120,7 +120,13 @@ class ledger {
         }
         // Step1: Check transaction
         if (input_num == 0) {
-            System.out.println(trans_ID + ": " + "good");
+            if (this.unit_index.containsKey(trans_ID)) {
+                System.out.println(trans_ID + ": Sorry, invalid transaction. The transaction ID has been used..");
+                System.out.println(trans_ID + ": " + "bad");
+                return;
+            } else {
+                System.out.println(trans_ID + ": " + "good");
+            }
         }
 
         if (input_num != 0 && this.Util.transaction_is_valid(this.unit_index, input, output, trans_ID) == false) {
